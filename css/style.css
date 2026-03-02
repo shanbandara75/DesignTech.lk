@@ -2196,3 +2196,34 @@ body{
     flex-wrap: wrap !important;
   }
 }
+
+/* =========================
+   HERO MOBILE FIX: prevent "Your" clipping
+========================= */
+
+/* 1) Make sure hero text is not clipped by overflow */
+.hero,
+.hero .container,
+.hero-grid,
+.hero-text,
+.hero-title{
+  overflow: visible !important;
+}
+
+/* 2) On phones, shrink only "Your" (and tighten spacing) so it fits */
+@media (max-width: 480px){
+  .hero-title .line1,
+  .hero-title .line2{
+    gap: 8px !important;
+  }
+
+  /* This is the key: reduce "Your" a bit on phones */
+  .hero-title .your{
+    font-size: clamp(64px, 22vw, 96px) !important;
+  }
+
+  /* Optional: tiny reduction to Ideas if needed */
+  .hero-title .hero-ideas{
+    font-size: clamp(58px, 18vw, 88px) !important;
+  }
+}
