@@ -2187,13 +2187,23 @@ body{
   }
 }
 
-/* Mobile SCROLLED navbar: remove the big left padding so brand moves left */
+/* Mobile: scrolled pill navbar — keep inner content inside the pill */
 @media (max-width: 860px){
-  .site-header.scrolled .nav-inner{
-    padding-left: 5px !important;
-    padding-right: 5px !important;
+
+  /* Let the pill control padding */
+  .site-header.scrolled .nav{
+    padding: 14px 18px; /* keep your original pill padding */
   }
 
+  /* Make nav-inner fit the pill's content area (no viewport-based width) */
+  .site-header.scrolled .nav-inner{
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Ensure brand doesn't have any old shifting */
   .site-header.scrolled .brand{
     margin-left: 0 !important;
   }
