@@ -1,0 +1,2156 @@
+html, body { overflow-x: hidden; }
+
+:root{
+  --container: 1100px;
+  --text: #0f172a;
+  --muted: #64748b;
+
+  --bg-soft: #eef6ff;
+  --nav-blue: #748eb6;
+  --accent: #0f9c8a;
+
+  --border: rgba(15, 23, 42, 0.10);
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: #fff;
+  line-height: 1.5;
+
+    /* ✅ very light blue from bottom-right to top-left */
+  background: linear-gradient(to top left, #eef6ff 0%, #ffffff 55%);
+}
+
+.container{
+  width: min(var(--container), calc(100% - 72px));
+  margin: 0 auto;
+}
+
+/* Navbar */
+/* NAVBAR (Full width, only bottom corners rounded) */
+.site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: transparent; /* keep your style */
+}
+
+.nav{
+  width: 100%;
+    background:
+    radial-gradient(circle at 20% 30%, rgba(59,130,246,0.4), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(14,165,233,0.3), transparent 40%),
+    linear-gradient(135deg, #0f172a, #1e293b);
+
+  color: #fff;
+
+  /* Square top corners + rounded bottom corners */
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+
+  padding: 16px 0; /* vertical padding only */
+}
+
+/* Inner content width control */
+.nav-inner {
+    width: min(var(--container), 100%);
+    margin: 0 auto;
+
+    padding-left: 90px;
+    padding-right: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* Brand */
+/* Brand alignment fix */
+.brand{
+  display: flex;
+  align-items: center;      /* vertical center */
+  gap: 3px;                /* adjust spacing between logo and text */
+  text-decoration: none;
+  color: var(--text);
+  margin-left: -58px; /* using this can change web name space between left*/
+
+  /* This makes baseline alignment nicer */
+  line-height: 1;
+}
+
+.brand-logo{
+  width: 46px;              /* match your figma visual size */
+  height: 46px;
+  object-fit: contain;
+  display: block;
+
+  /* tiny nudge if needed */
+  margin-top: 1px; /* using this can change the logo up down position*/
+}
+
+.brand-text{
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+
+  /* helps vertical alignment */
+  position: relative;
+  top: 3px; /* using this can change the text up down position*/
+}
+
+/* Menu */
+.nav-links{
+  display:flex;
+  gap: 18px;
+  align-items:center;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color: var(--text);
+  font-weight: 600;
+
+  background: rgba(255,255,255,0.95);
+  padding: 10px 20px;
+  border-radius: 999px;
+}
+
+/* Mobile button */
+.nav-toggle{
+  display:none;
+  background: rgba(255,255,255,0.95);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+/* Mobile behavior */
+@media (max-width: 860px){
+  .nav-links{ display:none; }
+  .nav-toggle{ display:inline-block; }
+
+  .nav-links.open{
+    display:flex;
+    flex-direction:column;
+    position:absolute;
+    right: 16px;
+    top: 80px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 18px;
+    padding: 14px;
+    gap: 12px;
+  }
+}
+
+/* Hero */
+.hero-grid{
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 70px;
+  align-items: center;
+}
+
+.hero-text,
+.hero-media{
+  min-width: 0; /* VERY IMPORTANT: allows grid items to shrink */
+}
+
+
+.hero-title{
+  margin:0 0 14px;
+  line-height: 1.0;
+  font-size: clamp(52px, 6vw, 92px); /* much larger like design */
+  font-weight: 300;                  /* thin look */
+  letter-spacing: -0.03em;
+}
+.hero-title .accent{ color: var(--accent); font-weight: 700; }
+
+.sub{
+  color: var(--muted);
+  margin: 0 0 22px;
+  max-width: 520px;
+  font-size: 16px;
+}
+
+.btn{
+  display:inline-block;
+  background: var(--accent);
+  color: white;
+  text-decoration:none;
+  padding: 14px 26px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+/* =========================
+   HERO TEXT (FIGMA STYLE)
+========================= */
+
+.hero-text{
+  max-width: 520px;
+  padding-left: 0px; /* using this can change the hero text left spase*/
+  padding-top: 0px; /* using this can change space between navbar and hero text*/
+}
+
+/* HERO TITLE - EXACT FIGMA TYPOGRAPHY */
+.hero-title{
+  margin: 0 0 18px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-family: "Inter", sans-serif;
+  font-weight: 200; /* Thin base */
+  color: #1b2433;
+}
+
+.hero-title .line1,
+.hero-title .line2{
+  display: flex;
+  align-items: flex-end;  /* aligns text nicely */
+  gap: 14px;              /* spacing between words */
+  flex-wrap: nowrap;      /* keep it on one line */
+}
+
+.hero-title .line1{ margin-bottom: 10px; }
+
+/* Bringing: Thin 64 */
+.hero-title .bringing{
+  font-size: 64px;
+  font-weight: 200;
+}
+
+/* Your: Thin 128 */
+.hero-title .your{
+  font-size: 128px;
+  font-weight: 200;
+  line-height: 0.9; /* makes it look like Figma */
+}
+
+/* Ideas to the: Thin 40 */
+.hero-title .ideas{
+  font-size: 40px;
+  font-weight: 200;
+}
+
+/* Real World: Bold 40 Green */
+.hero-title .realworld{
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Paragraph: Thin 20 */
+.hero-desc{
+  margin: 0 0 26px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 1.7;
+  color: #8a94a6;
+  max-width: 520px;
+  text-align: justify;
+}
+
+/* Button (match size/rounding) */
+.hero-btn{
+  padding: 16px 34px;
+  border-radius: 14px;
+  font-size: 16px;
+}
+
+
+/* Mobile */
+@media (max-width: 860px){
+  .hero-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .hero-media{
+    justify-content: center;
+  }
+
+  .hero-media img{
+    width: 100%;
+    height: auto;
+    max-width: 701px;
+  }
+
+  .hero{ padding: 36px 0; }
+}
+
+  .hero{
+    margin-left: -90px;
+}
+
+/* HERO background (gradient) */
+.hero{
+  position: relative;
+  margin-top: 0;
+  padding-top: 10px;
+  padding-bottom: 60px;
+  background: transparent;
+}
+
+  .hero .container{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+:root{
+  --hero-img-w: 780px;
+}
+
+
+/* =========================
+   HERO (final overrides)
+   Keep these at the very end so they override earlier experiments.
+   ========================= */
+
+/* Wider container so hero text + hero image fit without clipping */
+:root{ --container: 1400px; }
+
+/* Remove earlier negative shift (was dragging the image left) */
+.hero{ margin-left: 0; }
+
+/* Desktop hero layout (keep mobile stack rules above intact) */
+/* ===== HERO FINAL (desktop) ===== */
+/* ===== HERO IMAGE FINAL FIX (put at very end) ===== */
+/* =========================
+   HERO IMAGE - FINAL SIZE CONTROL
+   Paste this at the VERY END of style.css
+========================= */
+
+@media (min-width: 901px){
+  .hero-grid{
+    grid-template-columns: minmax(520px, 1fr) minmax(0, 1fr);
+    gap: 0px;
+  }
+
+  /* Keep image to the right with same screen gap as the text */
+.hero-media{
+  height: 520px;      /* keep your tall height */
+  max-width: 640px;   /* reduce width */
+  width: 100%;
+
+  justify-self: end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-media img{
+  height: 100%;       /* keep full height */
+  width: auto;        /* reduce width automatically */
+  max-width: 100%;    /* prevent overflow */
+  object-fit: contain;
+  opacity: 0.45;
+}
+
+  /* Don't shift the whole hero left (it drags the image too) */
+  .hero{ margin-left: 0; }
+}
+
+/* =========================
+   ABOUT SECTION (UPDATED to match Figma)
+========================= */
+
+.about{
+  padding: 20px 0; /* gap between hero and about section */
+  position: relative;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(215,205,255,0.8) 0%,
+      rgba(215,205,255,0.6) 40%,
+      rgba(215,205,255,0.3) 65%,
+      rgba(255,255,255,0) 100%
+    );
+}
+
+.about-grid{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* LEFT image block */
+.about-media{
+  position: relative;
+}
+
+/* ✅ Outer white rounded frame/card (Figma style) */
+.about-img-wrap{
+  display: inline-block;
+  width: 550px;                 /* frame width */
+  aspect-ratio: 568 / 400;      /* matches your image proportions */
+  border-radius: 28px;
+  overflow: hidden;             /* IMPORTANT: clips image to the rounded frame */
+  background: #fff;
+  position: relative;
+  transform: translateX(63px);  /* keep your current positioning */
+}
+
+
+/* ✅ Inner image “card” with slightly smaller radius */
+.about-img-wrap img{
+  width: 100%;
+  height: 100%;
+  display: block;        /* removes tiny gaps */
+  border-radius: 0;      /* wrapper handles rounding */
+  object-fit: cover;     /* fills the frame perfectly */
+  object-position: center;
+}
+
+/* Floating stat cards (overlapping) */
+/* Floating stat cards (INSIDE the image frame width) */
+.about-stats{
+  position: absolute;
+
+  /* ✅ lock to image card width (not section width) */
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* ✅ same width as the image frame (minus padding space) */
+  width: calc(100% - 44px);
+
+  bottom: 18px;              /* ✅ inside the frame (not outside) */
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+/* keep each stat card from stretching too wide */
+.stat-card{
+  flex: 1;
+  max-width: 220px;          /* ✅ prevents spreading wider than figma */
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  box-shadow: 0 14px 24px rgba(15,23,42,0.14);
+}
+
+/* icon box */
+.stat-icon{
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(15,156,138,0.12);
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.stat-num{
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.stat-label{
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* ✅ Add space so the overlapping cards don't get cut */
+.about-media{
+  padding-bottom: 36px;
+}
+
+/* RIGHT text block */
+.about-text{
+  text-align: center;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-tag{
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.about-text p{
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+/* Responsive — handled in detail at the end of the file */
+
+/* =========================
+   CORE SERVICES
+========================= */
+.services{
+  padding: 90px 0 110px;
+  background: #fff;
+}
+
+.services-head{
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.services-tag{
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.services-title{
+  margin: 0 0 10px;
+  font-size: clamp(34px, 4vw, 56px);
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  color: #1b2433;
+}
+
+.services-sub{
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.services-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.service-card{
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  border-radius: 14px;
+  padding: 26px 26px 28px;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.service-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(15,23,42,0.10);
+  border-color: rgba(15, 156, 138, 0.25);
+}
+
+.service-icon{
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(127, 179, 255, 0.18); /* soft blue like your design */
+  color: #1d4ed8;
+  margin-bottom: 18px;
+  font-size: 18px;
+}
+
+.service-card h3{
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.25;
+}
+
+.service-card p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 1024px){
+  .services-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px){
+  .services{ padding: 70px 0 90px; }
+  .services-grid{ grid-template-columns: 1fr; }
+}
+
+
+/* =========================
+   SOFTWARE WE USE
+========================= */
+.tools{
+  padding: 80px 0 100px;
+  background: linear-gradient(
+    135deg,
+    rgba(150, 200, 255, 0.18) 0%,
+    rgba(150, 200, 255, 0.10) 40%,
+    rgba(255,255,255, 0.00) 80%
+  );
+}
+
+
+.tools-title{
+  text-align: center;
+  margin: 0 0 44px;
+  font-size: clamp(28px, 3.2vw, 46px);
+  font-weight: 200;          /* thin like Figma */
+  letter-spacing: -0.02em;
+  color: #1b2433;
+}
+
+.tools-row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;           /* wraps nicely on smaller screens */
+}
+
+.tool-logo{
+  height: 68px;              /* controls logo size */
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: none;              /* keep original colors */
+}
+
+/* Tablet */
+@media (max-width: 1024px){
+  .tools-row{
+    justify-content: center;
+    gap: 40px;
+  }
+  .tool-logo{ height: 64px; }
+}
+
+/* Mobile */
+@media (max-width: 520px){
+  .tools{ padding: 60px 0 70px; }
+  .tool-logo{ height: 56px; }
+}
+
+
+/* =========================
+   SAMPLE PROJECTS
+========================= */
+
+.projects{
+  padding: 100px 0;
+  background: #f9fafb;
+}
+
+.section-header{
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2{
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.section-header p{
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.projects-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.project-card{
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+  transition: 0.3s ease;
+}
+
+.project-card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(15,23,42,0.12);
+}
+
+.project-img{
+  height: 240px;
+  overflow: hidden;
+}
+
+.project-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+.project-card:hover .project-img img{
+  transform: scale(1.05);
+}
+
+.project-content{
+  padding: 24px;
+}
+
+.project-content h3{
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.project-content p{
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.project-link{
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.project-link:hover{
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .projects-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   WHY CHOOSE US
+========================= */
+
+.why{
+  padding: 90px 0;
+  background: #1f2d3d;  /* dark navy */
+}
+
+.why-head{
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.why-head h2{
+  color: #fff;
+  font-size: 34px;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.why-head p{
+  color: rgba(255,255,255,0.75);
+  margin: 0;
+  font-size: 15px;
+}
+
+.why-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.why-card{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 26px 24px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.why-icon{
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(15,156,138,0.18);
+  color: #3de0c8;
+  font-size: 18px;
+  flex: 0 0 auto;
+}
+
+.why-body h3{
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.why-body p{
+  color: rgba(255,255,255,0.70);
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .why-grid{
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   CONTACT SECTION
+========================= */
+
+.contact{
+  padding: 90px 0 100px;
+  background: #fff;
+}
+
+.contact-head{
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 36px;
+}
+
+.contact-pill{
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e3a8a;
+  background: rgba(99, 146, 255, 0.18);
+  margin-bottom: 14px;
+}
+
+.contact-head h2{
+  margin: 0 0 10px;
+  font-size: 34px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.contact-head p{
+  margin: 0;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.contact-card{
+  max-width: 920px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid rgba(15,23,42,0.08);
+  box-shadow: 0 16px 30px rgba(15,23,42,0.10);
+  padding: 30px;
+}
+
+.contact-form .form-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-bottom: 18px;
+}
+
+.field label{
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.field input,
+.field textarea{
+  width: 100%;
+  border: 1px solid rgba(15,23,42,0.12);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+  color: #0f172a;
+}
+
+.field input::placeholder,
+.field textarea::placeholder{
+  color: #94a3b8;
+}
+
+.field textarea{
+  resize: none;
+  margin-bottom: 18px;
+}
+
+.field input:focus,
+.field textarea:focus{
+  border-color: rgba(99, 146, 255, 0.7);
+  box-shadow: 0 0 0 3px rgba(99, 146, 255, 0.18);
+}
+
+.form-footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.form-note{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.note-icon{
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 900;
+  color: #0f9c8a;
+  background: rgba(15,156,138,0.14);
+}
+
+.send-btn{
+  background: #1e40af;
+  color: #fff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 18px rgba(30, 64, 175, 0.25);
+}
+
+.send-btn:hover{
+  filter: brightness(1.05);
+}
+
+/* Responsive */
+@media (max-width: 820px){
+  .contact-card{ padding: 22px; }
+
+  .contact-form .form-row{
+    grid-template-columns: 1fr;
+  }
+
+  .form-footer{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .send-btn{
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer{
+  background: #1f2b3a;
+  padding: 55px 0 30px;
+  color: #cbd5e1;
+}
+
+.footer-inner{
+  text-align: center;
+}
+
+.footer-title{
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.footer-tagline{
+  margin: 8px 0 18px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.footer-icons{
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.footer-icons a{
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.06);
+  transition: 0.2s ease;
+}
+
+.footer-icons a:hover{
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+}
+
+.footer-icons img{
+  width: 16px;
+  height: 16px;
+  opacity: 0.9;
+}
+
+.footer-line{
+  height: 1px;
+  width: 100%;
+  background: rgba(99, 146, 255, 0.25);
+  margin: 0 auto 18px;
+}
+
+.footer-copy{
+  margin: 0;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+
+/* =========================================
+   RESPONSIVE FIXES (HERO + ABOUT)
+   Put this at the VERY END of style.css
+========================================= */
+
+/* ---------- HERO (Mobile/Tablet) ---------- */
+@media (max-width: 900px){
+
+  /* container should not squeeze too hard */
+  .container{
+    width: min(var(--container), calc(100% - 32px));
+  }
+
+  .hero{
+    padding-top: 28px;      /* keep nice gap under navbar */
+    padding-bottom: 44px;
+  }
+
+  .hero-grid{
+    grid-template-columns: 1fr;  /* stack */
+    gap: 26px;
+  }
+
+  /* Title MUST wrap on mobile */
+  .hero-title .line1,
+  .hero-title .line2{
+    flex-wrap: wrap;        /* ✅ allow wrapping */
+    gap: 10px;
+  }
+
+  /* Mobile font sizing (keeps same style but fits screen) */
+  .hero-title .bringing{ font-size: 44px; }
+  .hero-title .your{ font-size: clamp(70px, 18vw, 110px); line-height: 0.95; }
+  .hero-title .ideas{ font-size: 28px; }
+  .hero-title .realworld{ font-size: 28px; }
+
+  .hero-desc{
+    font-size: 16px;
+    line-height: 1.65;
+    text-align: left;       /* looks better on mobile */
+  }
+
+  .hero-text{
+    padding-top: 20px;      /* reduce huge top padding */
+    max-width: 100%;
+  }
+
+  .hero-media{
+    width: 100%;
+    max-width: 520px;       /* image not too big */
+    margin: 0 auto;         /* center it */
+    justify-self: center;
+  }
+
+  .hero-media img{
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ---------- ABOUT (Mobile/Tablet) ---------- */
+@media (max-width: 980px){
+
+  .about-grid{
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Remove desktop right-shift on mobile */
+  .about-img-wrap{
+    transform: none;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .about-media{
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding-bottom: 0;  /* Remove extra bottom padding; stats are now static */
+  }
+
+  /* On mobile, take stats out of absolute position and stack them below the image */
+  .about-stats{
+    position: static;
+    transform: none;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+    gap: 12px;
+    bottom: auto;
+    left: auto;
+  }
+
+  .stat-card{
+    flex: 1 1 140px;
+    max-width: 100%;
+  }
+
+  .about-img-wrap img{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .about-text{
+    max-width: 100%;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px){
+  .about-stats{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stat-card{
+    max-width: 100%;
+  }
+}
+
+/* Hero fade-on-scroll support (JS updates opacity/transform) */
+.hero{
+  will-change: opacity;
+}
+
+:root{
+  --header-h: 92px; /* same value you use in body padding-top */
+}
+
+/* Fixed hero (doesn't move) */
+.hero{
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--header-h));
+  z-index: 1;            /* below navbar (9999) but above page */
+  will-change: opacity;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(59,130,246,0.4), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(14,165,233,0.3), transparent 40%),
+    linear-gradient(135deg, #0f172a, #1e293b);
+
+  color: #fff;
+}
+
+/* This creates the scroll space that hero normally would occupy */
+.hero-spacer{
+  height: calc(100vh - var(--header-h));
+}
+
+
+/* =========================
+   NAVBAR PRO UPGRADE + HERO SEAM FIX
+   Paste at VERY END of style.css
+========================= */
+
+/* Keep one source of truth for header height */
+:root{
+  --header-h: 92px;            /* you already use this */
+  --nav-glass: rgba(15, 23, 42, 0.35);
+  --nav-border: rgba(255,255,255,0.10);
+  --nav-text: rgba(255,255,255,0.92);
+  --nav-text-dim: rgba(255,255,255,0.78);
+}
+
+/* Make header itself carry the same “hero” mood so it blends */
+.site-header{
+  background:
+    radial-gradient(circle at 20% 30%, rgba(59,130,246,0.35), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(14,165,233,0.25), transparent 40%),
+    linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+/* Turn the nav bar into a glass panel (professional look) */
+.nav{
+  background: var(--nav-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 14px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+
+/* Fix layout spacing (remove “manual nudges”) */
+.nav-inner{
+  width: min(var(--container), calc(100% - 48px));
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+/* Brand */
+.brand{
+  margin-left: 0;            /* remove negative shift */
+  gap: 10px;
+  color: var(--nav-text);
+}
+
+.brand-text{
+  color: var(--nav-text);    /* was using var(--text) (dark) */
+  top: 0;                    /* remove manual vertical nudge */
+  font-weight: 800;
+  font-size: 22px;
+}
+
+/* Make the nav links look “premium” */
+.nav-links{
+  gap: 10px;
+}
+
+.nav-links a{
+  color: var(--nav-text);
+  background: rgba(255,255,255,0.06);  /* instead of solid white pills */
+  border: 1px solid rgba(255,255,255,0.10);
+  padding: 10px 16px;
+  border-radius: 999px;
+
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.nav-links a:hover{
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.18);
+  transform: translateY(-1px);
+}
+
+/* Optional: make the active section link style easy (if you add .active via JS later) */
+.nav-links a.active{
+  background: rgba(15,156,138,0.18);
+  border-color: rgba(15,156,138,0.35);
+  color: #ffffff;
+}
+
+/* Mobile toggle also matches the glass style */
+.nav-toggle{
+  display: none; /* keeps your media query control */
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@media (max-width: 860px){
+  .nav-toggle{ display: inline-block; }
+
+  .nav-links.open{
+    top: calc(var(--header-h) - 10px);
+    right: 16px;
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .nav-links.open a{
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* IMPORTANT: remove visual seam by making hero background transparent
+   because header already has the gradient behind it */
+.hero{
+  background: transparent;
+}
+
+/* =========================
+   PROFESSIONAL HERO BACKGROUND
+========================= */
+
+.hero{
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--header-h));
+  display: flex;
+  align-items: center;
+
+  background-color: #0f172a;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+
+  overflow: hidden;
+}
+
+/* subtle overlay for depth */
+.hero::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.4));
+  pointer-events: none;
+}
+
+/* ===============================
+   MERGE NAVBAR + HERO AS ONE
+================================ */
+
+.site-header{
+  background: transparent;
+  border-bottom: none;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Make hero start from top of screen */
+.hero{
+  top: 0;
+  height: 100vh;
+}
+
+/* =================================
+   APPLY HERO GRID TO NAVBAR (FIXED)
+================================= */
+
+.nav{
+  background-color: #0f172a;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+  background-size: 60px 60px;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* ===============================
+   PUSH HERO CONTENT DOWN
+================================ */
+
+.hero{
+  align-items: flex-start;   /* stop vertical centering */
+  padding-top: 90px;        /* adjust this value */
+}
+
+
+/* ===============================
+   HERO WORD COLOR FIX
+================================ */
+
+.your,
+.realworld{
+  color: rgba(255,255,255,0.85);
+  opacity: 1;     /* remove faded effect */
+}
+
+/* ===============================
+   HERO VIDEO LAYERING FIX
+================================ */
+
+.hero{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+
+  /* keep your existing layout */
+  display: flex;
+  align-items: flex-start;
+  padding-top: calc(var(--header-h) + 80px);
+}
+
+/* Scroll space so next sections appear */
+.hero-spacer{
+  height: 100vh;
+}
+
+/* Video behind everything */
+.hero-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Dark overlay for readability */
+.hero::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(10, 18, 35, 0.55);
+}
+
+/* Keep your square grid overlay */
+.hero::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* Hero text ABOVE overlays */
+.hero-inner{
+  position: relative;
+  z-index: 3;
+}
+
+/* Remove hero image (since video is used) */
+.hero-image{
+  display: none !important;
+}
+
+/* Ensure hero content stays above video + overlays */
+.hero .container{
+  position: relative;
+  z-index: 3;
+}
+
+/* ===== HERO TEXT FIX (background words behind, no pushing content) ===== */
+
+.hero-text{
+  max-width: 680px;
+}
+
+/* Make the title a positioning context */
+.hero-title{
+  position: relative;
+  margin: 0 0 16px;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-family: "Inter", sans-serif;
+}
+
+/* Hide the manual <br> so it doesn't add extra height */
+.hero-title br{ display: none; }
+
+/* Background words: take them OUT of layout flow */
+.hero-title .hero-bg-text{
+  position: absolute;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  font-weight: 800;
+  font-size: clamp(42px, 6vw, 80px);
+  color: rgba(255,255,255,0.10);
+  margin: 0;
+  line-height: 1;
+}
+
+/* First bg line ("Bringing") */
+.hero-title .hero-bg-text:first-of-type{
+  top: -0.25em;
+}
+
+/* Second bg line ("Ideas to the") */
+.hero-title .hero-bg-text:nth-of-type(3){
+  top: 1.55em;
+}
+
+/* Foreground main word */
+.hero-title .hero-big{
+  position: relative;
+  z-index: 1;
+  display: block;
+
+  font-weight: 800;
+  font-size: clamp(76px, 10vw, 140px);
+  color: rgba(255,255,255,0.97);
+  line-height: 0.88;
+  margin: 0;
+}
+
+/* Accent word */
+.hero-title .hero-accent{
+  position: relative;
+  z-index: 1;
+  display: block;
+
+  font-weight: 800;
+  font-size: clamp(24px, 4vw, 44px);
+  color: var(--accent);
+  margin-top: 8px;
+}
+
+/* Your paragraph class (matches your HTML) */
+.hero-description{
+  margin: 0 0 22px;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.72);
+  max-width: 560px;
+  word-spacing: 8px;
+}
+
+/* Optional: give a bit more room so nothing clips on shorter screens */
+.hero{
+  padding-bottom: 80px;
+}
+
+/* Mobile tuning */
+@media (max-width: 900px){
+  .hero-title .hero-bg-text:nth-of-type(3){
+    top: 1.35em;
+  }
+  .hero-description{
+    font-size: 16px;
+    word-spacing: 6px;
+  }
+}
+
+/* =========================================
+   NAVBAR: fully transparent over hero
+   + solid after scroll
+========================================= */
+
+.site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: transparent;
+}
+
+/* Completely invisible navbar on top of hero */
+.nav{
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 18px 0;
+}
+
+/* Text colors for hero */
+.brand,
+.brand-text{
+  color: rgba(255,255,255,0.95) !important;
+}
+
+/* Pills like the tourism site (still visible, but navbar itself is invisible) */
+.nav-links a{
+  color: rgba(255,255,255,0.92) !important;
+  background: rgba(255,255,255,0.10) !important;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+}
+.nav-links a:hover{
+  background: rgba(255,255,255,0.18) !important;
+  transform: translateY(-1px);
+}
+
+/* Mobile toggle style */
+.nav-toggle{
+  color: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.10) !important;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+}
+
+/* Push hero content down so it doesn't go under navbar */
+.hero{
+  padding-top: 120px !important;
+}
+
+/* ===== After scroll: navbar becomes solid (readable on sections) ===== */
+.site-header.scrolled .nav{
+  background: rgba(10, 18, 35, 0.78) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35) !important;
+}
+
+/* Optional: slightly stronger pills when scrolled */
+.site-header.scrolled .nav-links a{
+  background: rgba(255,255,255,0.12) !important;
+}
+
+/* =================================
+   HERO GRID – SMALL BOXES ONLY
+================================= */
+
+.hero::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  /* Only small grid lines */
+  background-image:
+    linear-gradient(rgba(255,255,255,0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.10) 1px, transparent 1px);
+
+  background-size: 60px 60px; /* small box size */
+  opacity: 0.7;
+}
+
+/* =========================================
+   SPLIT TECH BUTTON (Like Your Image)
+========================================= */
+
+.btn-split{
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 15px;
+
+  padding: 6px 6px 6px 28px;
+  border-radius: 999px;
+  border: 2px solid #3b82f6;
+
+  color: #ffffff;
+  background: transparent;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.35s ease;
+}
+
+/* Text */
+.btn-split .btn-text{
+  margin-right: 18px;
+}
+
+/* Circular icon area */
+.btn-split .btn-icon{
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  transition: all 0.35s ease;
+}
+
+/* Hover effect */
+.btn-split:hover{
+  border-color: #06b6d4;
+  box-shadow: 0 0 20px rgba(59,130,246,0.4);
+}
+
+/* Move arrow slightly */
+.btn-split:hover .btn-icon{
+  transform: translateX(4px);
+  box-shadow: 0 0 20px rgba(6,182,212,0.5);
+}
+
+/* HERO background words → solid white */
+.hero-title .hero-bg-text,
+.bringing,
+.ideas{
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* =========================================
+   HERO TITLE: baseline alignment FIX
+   (Bringing + Your perfectly straight)
+========================================= */
+
+.hero-title{
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: baseline !important;   /* ✅ this is the key */
+  column-gap: 28px;
+  row-gap: 2px;
+}
+
+/* Make sure these spans participate in baseline layout */
+.hero-title > span{
+  display: inline-block !important;
+  line-height: 1 !important;
+}
+
+/* Force correct order so flex never messes the rows */
+.hero-title > span:nth-of-type(1){ order: 1; } /* Bringing */
+.hero-title > span:nth-of-type(2){ order: 2; } /* Your */
+.hero-title br{
+  order: 3;
+  flex-basis: 100% !important;        /* ✅ acts like a real line break */
+  width: 0 !important;
+  height: 0 !important;
+  display: block !important;
+}
+.hero-title > span:nth-of-type(3){ order: 4; } /* Ideas to the */
+.hero-title > span:nth-of-type(4){ order: 5; } /* Real World */
+
+/* Optional: keep Bringing/Ideas same style */
+.hero-title .hero-bg-text{ color: #fff !important; opacity: 1 !important; }
+
+
+/* =========================================
+   HERO TITLE (FINAL CLEAN RULES for your HTML)
+========================================= */
+
+.hero-title{
+  margin: 0 0 16px;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+/* Row layout */
+.hero-title .line1,
+.hero-title .line2{
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+/* Tight row gap */
+.hero-title .line1{ margin-bottom: 2px; }
+
+/* LINE 1 sizes */
+.hero-title .bringing{
+  font-size: 64px;
+  font-weight: 200;
+  line-height: 1;
+  color: #fff;
+}
+
+.hero-title .your{
+  font-size: 128px;
+  font-weight: 200;
+  line-height: 0.9;
+  color: #fff;
+}
+
+/* LINE 2 base size (this fixes “to the”) */
+.hero-title .to-the{
+  font-size: 40px;
+  font-weight: 200;
+  line-height: 1;
+  color: #fff;
+}
+
+/* Make only the word “Ideas” bigger */
+.hero-title .hero-ideas{
+  font-size: 100px;     /* adjust as you like */
+  font-weight: 200;
+  line-height: 1;
+  color: #0f9c8a;
+}
+
+/* Real World */
+.hero-title .realworld{
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* =========================================
+   SCROLLED NAVBAR = floating purple pill
+========================================= */
+
+/* Keep header fixed */
+.site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+/* Default (on hero) stays transparent */
+.nav{
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* SCROLLED: pill container */
+.site-header.scrolled .nav{
+  width: min(1180px, calc(100% - 40px));
+  margin: 14px auto 0;
+  padding: 14px 18px;
+
+  border-radius: 20px;
+
+  /* gradient like your screenshot */
+  background: linear-gradient(90deg, #2b0a8a, #4b27ff, #7a2cff) !important;
+
+  /* soft glow + depth */
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.35),
+    0 0 30px rgba(89, 51, 255, 0.35);
+
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Make sure links are readable */
+.site-header.scrolled .nav-links a{
+  color: rgba(255,255,255,0.92) !important;
+  background: rgba(255,255,255,0.10) !important;
+  border: 1px solid rgba(255,255,255,0.16);
+}
+
+/* Hamburger icon style (like the screenshot) */
+.site-header.scrolled .nav-toggle{
+  background: rgba(255,255,255,0.10) !important;
+  border: 1px solid rgba(255,255,255,0.16);
+  color: #fff !important;
+  border-radius: 14px;
+}
+
+/* Optional: slightly smaller logo/text when scrolled */
+.site-header.scrolled .brand-text{
+  color: #fff !important;
+}
+
+/* ===============================
+   ABOUT TAG – Premium Label
+================================= */
+
+.about-tag{
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.about-tag::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 2px;
+}
+
+/* =========================================
+   CORE SERVICES – Premium cards + animation
+========================================= */
+
+.services{
+  background: radial-gradient(circle at 20% 0%, rgba(99,102,241,0.08), transparent 55%),
+              radial-gradient(circle at 85% 20%, rgba(34,211,238,0.10), transparent 55%),
+              #fff;
+}
+
+.service-card{
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  box-shadow: 0 10px 26px rgba(15,23,42,0.06);
+  transform: translateY(0);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+/* Gradient border glow layer */
+.service-card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(99,102,241,.55), rgba(34,211,238,.45), rgba(168,85,247,.45));
+  opacity: 0;
+  filter: blur(10px);
+  z-index: 0;
+  transition: opacity .25s ease;
+}
+
+/* Shine sweep layer */
+.service-card::after{
+  content:"";
+  position:absolute;
+  top:-20%;
+  left:-120%;
+  width: 80%;
+  height: 140%;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  opacity: 0;
+  z-index: 0;
+}
+
+/* Hover */
+.service-card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 26px 60px rgba(15,23,42,0.14);
+  border-color: rgba(99,102,241,0.35);
+}
+
+.service-card:hover::before{
+  opacity: 1;
+}
+
+.service-card:hover::after{
+  opacity: 1;
+  animation: svcShine .9s ease forwards;
+}
+
+@keyframes svcShine{
+  to{ left: 130%; }
+}
+
+/* Bring content above effects */
+.service-card > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* Icon badge – premium */
+.service-icon{
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.55), transparent 55%),
+              linear-gradient(135deg, rgba(59,130,246,0.22), rgba(34,211,238,0.18), rgba(168,85,247,0.16));
+
+  border: 1px solid rgba(99,102,241,0.18);
+  box-shadow: 0 12px 26px rgba(59,130,246,0.12);
+}
+
+.service-icon svg{
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  color: #2563eb; /* blue */
+}
+
+/* Icon glow on hover */
+.service-card:hover .service-icon{
+  box-shadow: 0 16px 34px rgba(59,130,246,0.18), 0 0 28px rgba(34,211,238,0.14);
+  border-color: rgba(34,211,238,0.25);
+}
+
+.service-card h3{
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.service-card p{
+  font-size: 14.5px;
+}
+
+/* Optional: nicer entrance animation (works with JS below) */
+.service-card.reveal{
+  opacity: 1;
+  transform: translateY(0);
+}
+.service-card{
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* ===============================
+   Real <img> background system
+================================ */
+
+.service-card{
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background image */
+.service-card .card-bg-img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0.18;              /* subtle visible background */
+  transform: scale(1.02);
+
+  transition: opacity .4s ease;
+  z-index: 0;
+}
+
+/* Hover: fade image away */
+.service-card:hover .card-bg-img{
+  opacity: 0;
+}
+
+/* Keep content above image */
+.service-card > *:not(.card-bg-img){
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================
+   WORD ROTATOR – BLUR TRANSITION
+========================= */
+
+/* Reduce top gap above the rotating text */
+.word-rotator{
+  min-height: 60vh;       /* was 70vh */
+  align-items: flex-start; /* stop vertical centering */
+  padding-top: 40px;      /* control how close it is to the previous section */
+  padding-bottom: 20px;
+}
+
+.rotator-stage{
+  position: relative;
+  width: 100%;
+  min-height: 180px;      /* slightly smaller so it doesn't create extra empty space */
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+/* both layers stacked */
+.rotator-text{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 18px;
+
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  font-size: clamp(52px, 7.2vw, 124px);
+  color: #0f172a;
+
+  opacity: 0;
+  filter: blur(14px);
+  transform: scale(1.02);
+
+  transition:
+    opacity 600ms cubic-bezier(.22,.61,.36,1),
+    filter 600ms cubic-bezier(.22,.61,.36,1),
+    transform 600ms cubic-bezier(.22,.61,.36,1);
+
+  will-change: opacity, filter, transform;
+}
+
+/* active (visible) state */
+.rotator-text.is-active{
+  opacity: 1;
+  filter: blur(0px);
+  transform: scale(1);
+}
+
+/* outgoing blur */
+.rotator-text.is-leaving{
+  opacity: 0;
+  filter: blur(18px);
+  transform: scale(0.98);
+}
+
+/* layout control */
+.rotator-text .wrap{
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.rotator-text .line{
+  display: block;
+}
+
+/* subtle style variations allowed */
+.rotator-text.style-1{ color:#0f172a; }
+.rotator-text.style-2{ color:#111827; font-weight:800; }
+.rotator-text.style-3{ color:#0b1220; }
+.rotator-text.style-4{ color:#0f172a; }
+
+@media (prefers-reduced-motion: reduce){
+  .rotator-text{
+    transition: none !important;
+    filter: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    position: static;
+  }
+}
+
