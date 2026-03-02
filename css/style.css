@@ -2190,8 +2190,8 @@ body{
 /* Mobile SCROLLED navbar: remove the big left padding so brand moves left */
 @media (max-width: 860px){
   .site-header.scrolled .nav-inner{
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
   }
 
   .site-header.scrolled .brand{
