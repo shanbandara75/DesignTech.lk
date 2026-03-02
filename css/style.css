@@ -1063,11 +1063,18 @@ body{
   }
 
   /* Title MUST wrap on mobile */
-  .hero-title .line1,
-  .hero-title .line2{
-    flex-wrap: wrap;        /* ✅ allow wrapping */
-    gap: 10px;
-  }
+/* Keep "Bringing" + "Your" on the SAME row */
+.hero-title .line1{
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 10px;
+}
+
+/* Allow line 2 to wrap normally */
+.hero-title .line2{
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
   /* Mobile font sizing (keeps same style but fits screen) */
   .hero-title .bringing{ font-size: 44px; }
@@ -2154,115 +2161,21 @@ body{
   }
 }
 
-/* =====================================================
-   HERO TITLE — RESPONSIVE SIZES (KEEP ORIGINAL STYLE)
-   (Only overrides font-size + wrapping; does NOT touch font-weight/colors)
-   Paste at VERY END of style.css
-===================================================== */
+/* FINAL HERO RESPONSIVE SCALING */
+@media (max-width: 900px){
 
-/* Keep your two designed rows as two rows */
-.hero-title .line1,
-.hero-title .line2{
-  flex-wrap: nowrap !important;
-  white-space: nowrap !important;
-  gap: clamp(10px, 1.6vw, 14px) !important; /* scales gap slightly */
-}
-
-/* Fluid sizing per word (preserves your original proportions) */
-.hero-title .bringing{
-  font-size: clamp(46px, 6.2vw, 64px) !important;
-}
-
-.hero-title .your{
-  font-size: clamp(86px, 12.2vw, 128px) !important; /* stays big on small tabs */
-}
-
-.hero-title .hero-ideas{
-  font-size: clamp(68px, 10.4vw, 100px) !important;
-}
-
-.hero-title .to-the{
-  font-size: clamp(28px, 4.6vw, 40px) !important;
-}
-
-.hero-title .realworld{
-  font-size: clamp(28px, 4.6vw, 40px) !important;
-}
-
-/* Only on very small phones allow line2 to wrap if absolutely necessary */
-@media (max-width: 360px){
-  .hero-title .line2{
-    white-space: normal !important;
-    flex-wrap: wrap !important;
-  }
-}
-
-/* =====================================================
-   HERO MOBILE FIX
-   - Prevent "Your" clipping
-   - Keep "Real World" together
-   - Keep your existing boldness/colors (no weight changes)
-===================================================== */
-
-@media (max-width: 480px){
-
-  /* Let line 1 wrap so "Your" can move down instead of being cut */
   .hero-title .line1{
-    flex-wrap: wrap !important;
-    white-space: normal !important;
-    gap: 10px !important;
+    flex-wrap: nowrap;
+    white-space: nowrap;
   }
 
-  /* Keep line 2 flexible, but keep "Real World" together */
-  .hero-title .line2{
-    flex-wrap: wrap !important;
-    white-space: normal !important;
-    gap: 10px !important;
-  }
-
-  /* Make "Real World" an unbreakable unit */
-  .hero-title .realworld{
-    white-space: nowrap !important;     /* prevents Real | World splitting */
-  }
-
-  /* Responsive sizes (same max as your desktop px values) */
+  /* Scale BOTH words proportionally */
   .hero-title .bringing{
-    font-size: clamp(38px, 10vw, 64px) !important;
+    font-size: clamp(36px, 6vw, 64px);
   }
 
   .hero-title .your{
-    font-size: clamp(64px, 18vw, 128px) !important; /* big but fits */
-  }
-
-  .hero-title .hero-ideas{
-    font-size: clamp(54px, 16vw, 100px) !important;
-  }
-
-  .hero-title .to-the,
-  .hero-title .realworld{
-    font-size: clamp(24px, 6.5vw, 40px) !important;
-  }
-}
-
-/* FIX: hero shifted left (causing "Your" clipping on mobile) */
-.hero{ margin-left: 0 !important; }
-
-/* restore normal side padding */
-.hero .container{
-  padding-left: 24px !important;
-  padding-right: 24px !important;
-}
-
-@media (max-width: 480px){
-  /* allow Bringing / Your to wrap instead of clipping */
-  .hero-title .line1{
-    flex-wrap: wrap !important;
-    white-space: normal !important;
-  }
-
-  /* Real World should always be one chunk and on its own line */
-  .hero-title .realworld{
-    display: block !important;
-    white-space: nowrap !important;
+    font-size: clamp(72px, 12vw, 128px);
+    line-height: 0.9;
   }
 }
