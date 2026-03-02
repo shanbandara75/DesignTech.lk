@@ -2243,3 +2243,26 @@ body{
     font-size: clamp(24px, 6.5vw, 40px) !important;
   }
 }
+
+/* FIX: hero shifted left (causing "Your" clipping on mobile) */
+.hero{ margin-left: 0 !important; }
+
+/* restore normal side padding */
+.hero .container{
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+@media (max-width: 480px){
+  /* allow Bringing / Your to wrap instead of clipping */
+  .hero-title .line1{
+    flex-wrap: wrap !important;
+    white-space: normal !important;
+  }
+
+  /* Real World should always be one chunk and on its own line */
+  .hero-title .realworld{
+    display: block !important;
+    white-space: nowrap !important;
+  }
+}
