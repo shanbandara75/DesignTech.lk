@@ -2154,3 +2154,45 @@ body{
   }
 }
 
+/* =====================================================
+   HERO TITLE — RESPONSIVE SIZES (KEEP ORIGINAL STYLE)
+   (Only overrides font-size + wrapping; does NOT touch font-weight/colors)
+   Paste at VERY END of style.css
+===================================================== */
+
+/* Keep your two designed rows as two rows */
+.hero-title .line1,
+.hero-title .line2{
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  gap: clamp(10px, 1.6vw, 14px) !important; /* scales gap slightly */
+}
+
+/* Fluid sizing per word (preserves your original proportions) */
+.hero-title .bringing{
+  font-size: clamp(46px, 6.2vw, 64px) !important;
+}
+
+.hero-title .your{
+  font-size: clamp(86px, 12.2vw, 128px) !important; /* stays big on small tabs */
+}
+
+.hero-title .hero-ideas{
+  font-size: clamp(68px, 10.4vw, 100px) !important;
+}
+
+.hero-title .to-the{
+  font-size: clamp(28px, 4.6vw, 40px) !important;
+}
+
+.hero-title .realworld{
+  font-size: clamp(28px, 4.6vw, 40px) !important;
+}
+
+/* Only on very small phones allow line2 to wrap if absolutely necessary */
+@media (max-width: 360px){
+  .hero-title .line2{
+    white-space: normal !important;
+    flex-wrap: wrap !important;
+  }
+}
