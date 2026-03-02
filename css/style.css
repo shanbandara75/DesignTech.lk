@@ -2186,3 +2186,17 @@ body{
     white-space: nowrap;
   }
 }
+
+/* Fix mobile scrolled navbar brand alignment */
+@media (max-width: 860px){
+
+  .site-header.scrolled .nav{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .site-header.scrolled .brand{
+    margin-left: 0;
+  }
+
+}
