@@ -2187,16 +2187,14 @@ body{
   }
 }
 
-/* Fix mobile scrolled navbar brand alignment */
+/* Mobile SCROLLED navbar: remove the big left padding so brand moves left */
 @media (max-width: 860px){
-
-  .site-header.scrolled .nav{
-    padding-left: 16px;
-    padding-right: 16px;
+  .site-header.scrolled .nav-inner{
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 
   .site-header.scrolled .brand{
-    margin-left: 0;
+    margin-left: 0 !important;
   }
-
 }
