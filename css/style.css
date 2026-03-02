@@ -2079,9 +2079,8 @@ body{
 
 /* Reduce top gap above the rotating text */
 .word-rotator{
-  min-height: 60vh;       /* was 70vh */
-  align-items: flex-start; /* stop vertical centering */
-  padding-top: 40px;      /* control how close it is to the previous section */
+  min-height: auto;       /* ✅ remove forced tall section */
+  padding-top: 40px;
   padding-bottom: 20px;
 }
 
@@ -2208,3 +2207,16 @@ body{
     margin-left: 0 !important;
   }
 }
+
+
+/* ===== Unified Premium Warm Background ===== */
+
+/* ===== Unified Premium Warm Background ===== */
+
+.about,
+.services,
+.word-rotator,
+.projects{
+  background-color: #fffcef;
+}
+
